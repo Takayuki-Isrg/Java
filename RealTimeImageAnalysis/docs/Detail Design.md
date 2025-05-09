@@ -1,11 +1,11 @@
-## 2. 詳細設計 (LLD)
+# リアルタイム画像解析ダッシュボード設計仕様
 
----
+## 2. 詳細設計
 
 ### 2.1 通信仕様
 
-- **WebSocket エンドポイント**: `wss://<domain>/api/ws/image-analysis`
-- **メッセージ形式**:
+- WebSocket エンドポイント: `wss://<domain>/api/ws/image-analysis`
+- メッセージ形式:
 
   - クライアント → サーバー: `{"action":"upload","imageId":"ID","blobUrl":"URL"}`
   - サーバー → クライアント: `{"imageId":"ID","tags":["tag1","tag2"],"ocrText":"...","objects":[{x,y,w,h,label}]}`
@@ -73,15 +73,15 @@ sequenceDiagram
 
 ### 2.5 フロントエンド設計
 
-- **React コンポーネント**:
+- React コンポーネント:
 
   - `ImageUploader`: 画像選択・プレビュー
   - `AnalysisDashboard`: 各画像ごとのタグクラウド表示
   - `OCRViewer`: テキスト表示領域
   - `ObjectOverlay`: 画像上にボックス描画
 
-- **状態管理**: React Context + Hooks
-- **スタイリング**: Tailwind CSS
+- 状態管理: React Context + Hooks
+- スタイリング: Tailwind CSS
 
 ### 2.6 インフラ／リソース構成
 

@@ -6,9 +6,9 @@
 
 ### 1.1 パイプライン概要
 
-- **目的**: ソースコードの品質担保、自動ビルド・テスト・デプロイの標準化
-- **対象リポジトリ**: `github.com/<org>/<repo>`
-- **主な利用サービス**: GitHub Actions または Azure DevOps
+- 目的: ソースコードの品質担保、自動ビルド・テスト・デプロイの標準化
+- 対象リポジトリ: `github.com/<org>/<repo>`
+- 主な利用サービス: GitHub Actions または Azure DevOps
 
 ### 1.2 ブランチ戦略
 
@@ -38,7 +38,7 @@ flowchart LR
 | :--------------------- | :------------------------------------------ | :--------------------------------------- |
 | コード静的解析         | ESLint／Checkstyle／SpotBugs                | `actions/checkout`, `actions/setup-java` |
 | 単体テスト             | JUnit／Mockito                              | `mvn test`                               |
-| ビルド                 | Maven／Gradle                               | `mvn package` / `gradle build`           |
+| ビルド                 | Gradle                                     | `gradle build`                          |
 | 結合テスト             | TestContainers／Postman テスト              | カスタムスクリプト                       |
 | デプロイ（Staging）    | Azure Functions Deploy / App Service Deploy | Azure CLI Action                         |
 | デプロイ（Production） | Blue-Green デプロイ／Slot スワップ          | Azure Deploy Action                      |
@@ -75,9 +75,9 @@ sequenceDiagram
 
 ### 2.3 ネットワーク制御
 
-- **VNet 統合**: Azure Functions および App Service を VNet に統合
-- **NSG ルール**: 必要ポートのみ許可 (HTTP/HTTPS)
-- **CORS 設定**: フロントドメインのみ許可
+- VNet 統合: Azure Functions および App Service を VNet に統合
+- NSG ルール: 必要ポートのみ許可 (HTTP/HTTPS)
+- CORS 設定: フロントドメインのみ許可
 
 ---
 
