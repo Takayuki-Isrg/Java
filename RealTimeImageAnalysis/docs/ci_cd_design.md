@@ -33,7 +33,7 @@ flowchart LR
 | ステップ               | 実行内容                                    | 使用ツール／アクション                   |
 | :--------------------- | :------------------------------------------ | :--------------------------------------- |
 | コード静的解析         | ESLint／Checkstyle／SpotBugs                | `actions/checkout`, `actions/setup-java` |
-| 単体テスト             | JUnit／Mockito                              | `mvn test`                               |
+| 単体テスト             | JUnit／Mockito                              | `gradle test`                               |
 | ビルド                 | Gradle                                      | `gradle build`                           |
 | 結合テスト             | TestContainers／Postman テスト              | カスタムスクリプト                       |
 | デプロイ（Staging）    | Azure Functions Deploy / App Service Deploy | Azure CLI Action                         |

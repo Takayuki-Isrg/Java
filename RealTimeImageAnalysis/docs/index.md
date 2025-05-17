@@ -10,5 +10,3 @@
 - [変更履歴 (Changelog)](changelog.md)
 
 ---
-
-## ファイル構成

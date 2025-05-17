@@ -10,7 +10,7 @@ sequenceDiagram
   participant BE as Backend API
 
   User->>FE: login request
-  FE->>AD: OAuth0 Authorization Code
+  FE->>AD: OAuth2.0 Authorization Code
   AD-->>FE: ID Token + Access Token
   FE->>BE: API request with Bearer token
   BE->>AD: validate token
