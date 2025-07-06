@@ -74,9 +74,9 @@ flowchart LR
 ```mermaid
 classDiagram
   class WebSocketController {
-    + onConnect(Session s)
-    + onMessage(String msg)
-    + onClose(Session s)
+    + onConnect(Session s): void
+    + onMessage(String msg): void
+    + onClose(Session s): void
   }
   class ImageProcessorService {
     + processImage(String blobUrl): AnalysisResult
@@ -87,7 +87,7 @@ classDiagram
     + detectObjects(URL)
   }
   class VirtualThreadExecutor {
-    + executeTasks(List<Runnable>): void
+    + submit(Runnable task): void
   }
   class ResultRepository {
     + save(AnalysisRecord)
