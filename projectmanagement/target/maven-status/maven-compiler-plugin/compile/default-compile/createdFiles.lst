@@ -1,0 +1,11 @@
+com\example\entity\User.class
+com\example\config\SecurityConfig.class
+com\example\ProjectManagerApplication.class
+com\example\controller\ProjectController.class
+com\example\controller\UserController.class
+com\example\repository\UserRepository.class
+com\example\config\DataInitializer.class
+com\example\service\UserService.class
+com\example\controller\DashboardController.class
+com\example\controller\CommentController.class
+com\example\controller\TaskController.class

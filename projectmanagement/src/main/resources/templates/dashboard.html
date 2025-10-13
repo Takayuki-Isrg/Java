@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダッシュボード - プロジェクト管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.projectmanagement.css">
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-kanban"></i> プロジェクト管理
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" th:href="@{/dashboard}">
+                            <i class="bi bi-house"></i> ダッシュボード
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/projects}">
+                            <i class="bi bi-folder"></i> プロジェクト
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/tasks}">
+                            <i class="bi bi-list-task"></i> タスク
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span th:text="${username}">ユーザー</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> プロフィール</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> 設定</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" th:href="@{/logout}"><i class="bi bi-box-arrow-right"></i> ログアウト</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <div class="container-fluid mt-4">
+        <!-- ウェルカムメッセージ -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h1 class="card-title">
+                            <i class="bi bi-house-heart text-primary"></i>
+                            ようこそ、<span th:text="${username}">ユーザー</span>さん！
+                        </h1>
+                        <p class="card-text text-muted">プロジェクト管理システムへようこそ。今日も効率的に作業を進めましょう。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 統計カード -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="card-title" th:text="${totalProjects}">0</h4>
+                                <p class="card-text">プロジェクト</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="bi bi-folder fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="card-title" th:text="${totalTasks}">0</h4>
+                                <p class="card-text">総タスク</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="bi bi-list-task fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="card-title" th:text="${pendingTasks}">0</h4>
+                                <p class="card-text">進行中</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="bi bi-clock fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 class="card-title" th:text="${completedTasks}">0</h4>
+                                <p class="card-text">完了済み</p>
+                            </div>
+                            <div class="align-self-center">
+                                <i class="bi bi-check-circle fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- クイックアクション -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-lightning"></i> クイックアクション
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <a href="#" class="btn btn-outline-primary w-100" th:href="@{/projects/new}">
+                                    <i class="bi bi-plus-circle"></i> 新しいプロジェクト
+                                </a>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <a href="#" class="btn btn-outline-success w-100" th:href="@{/tasks/new}">
+                                    <i class="bi bi-plus-square"></i> 新しいタスク
+                                </a>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <a href="#" class="btn btn-outline-info w-100" th:href="@{/projects}">
+                                    <i class="bi bi-folder"></i> プロジェクト一覧
+                                </a>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <a href="#" class="btn btn-outline-warning w-100" th:href="@{/tasks}">
+                                    <i class="bi bi-list-task"></i> タスク一覧
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最近のアクティビティ（今後実装予定） -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-clock-history"></i> 最近のアクティビティ
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">最近のアクティビティはありません。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-calendar-event"></i> 今日の予定
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">今日の予定はありません。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

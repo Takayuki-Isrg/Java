@@ -1,0 +1,57 @@
+<div class="container mt-4">
+    <meta charset="UTF-8">
+    <h2>タスク一覧</h2>
+
+    <!-- フィルタフォーム -->
+    <form class="row g-2 mb-3">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="キーワード検索">
+        </div>
+        <div class="col">
+            <select class="form-select">
+                <option value="">担当者</option>
+<!--                <option>Aさん</option>-->
+<!--                <option>Bさん</option>-->
+            </select>
+        </div>
+        <div class="col">
+            <select class="form-select">
+                <option value="">優先度</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+            </select>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary">検索</button>
+        </div>
+    </form>
+
+    <!-- タスクテーブル -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>タイトル</th>
+            <th>担当者</th>
+            <th>期限</th>
+            <th>優先度</th>
+            <th>ステータス</th>
+        </tr>
+        </thead>
+        <tbody>
+<!--        <tr th:each="task : ${tasks}">-->
+<!--            <td th:text="${task.title}"></td>-->
+<!--            <td th:text="${task.assignee.username}"></td>-->
+<!--            <td th:text="${task.dueDate}"></td>-->
+<!--            <td>-->
+<!--          <span th:classappend="${task.priority == 'High'} ? 'badge bg-danger' :-->
+<!--                                (${task.priority == 'Medium'} ? 'badge bg-warning' : 'badge bg-secondary')"-->
+<!--                th:text="${task.priority}"></span>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <span th:text="${task.status}"></span>-->
+<!--            </td>-->
+<!--        </tr>-->
+        </tbody>
+    </table>
+</div>
