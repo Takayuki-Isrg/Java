@@ -25,7 +25,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "projects")
-public class project {
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -159,5 +159,9 @@ public class project {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public enum ProjectStatus {
+        ACTIVE, COMPLETED, ARCHIVED, ON_HOLD
     }
 }
