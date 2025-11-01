@@ -4,6 +4,63 @@
 
 ---
 
+## [バージョン 0.0.2-SNAPSHOT] - 2025-11-01
+
+### 🔄 構造改善 - Maven標準構造への移行
+
+#### ✅ 変更 (Changed)
+
+##### プロジェクト構造の全面改修
+- **フォルダ構造を標準Maven構造に完全移行**
+  - 旧: `src/com/example/main/java/` (非標準)
+  - 新: `src/main/java/com/example/projectmanagement/` (Maven標準)
+
+##### 移行されたコンポーネント
+- **Javaファイル** - 全14ファイルのpackage宣言を修正
+  - エンティティ: User.java, Project.java, ProjectMember.java
+  - リポジトリ: UserRepository.java, ProjectRepository.java
+  - サービス: UserService.java
+  - コントローラ: UserController.java, DashboardController.java, ProjectController.java, TaskController.java, CommentController.java
+  - 設定: SecurityConfig.java, DataInitializer.java
+  - メインクラス: ProjectManagerApplication.java
+
+- **resourcesフォルダ** - `src/main/resources/` に移動
+  - application.properties
+  - application-prod.properties
+  - static/ (CSS, JS)
+  - templates/ (Thymeleaf)
+
+- **testフォルダ** - 標準構造 `src/test/java/com/example/projectmanagement/` に整備
+
+##### パッケージ構造の統一
+- **新パッケージ名**: `com.example.projectmanagement.*`
+  - com.example.projectmanagement.entity
+  - com.example.projectmanagement.repository
+  - com.example.projectmanagement.service
+  - com.example.projectmanagement.controller
+  - com.example.projectmanagement.config
+
+#### ✅ 修正 (Fixed)
+- Project.javaの不正なimport文を修正（org.springframework.scheduling.config.Task → 削除）
+- ProjectMember.javaにproject/userフィールドとgetters/settersを追加
+- 全ファイルのimport文を新しいパッケージ構造に合わせて修正
+
+#### 🗑️ 削除 (Removed)
+- 旧フォルダ構造 `src/com/example/main/` を完全削除
+
+#### 📚 ドキュメント更新
+- FILE_STRUCTURE.md - 新しい構造を反映、実装状況を更新
+- CHANGELOG.md - この変更を記録
+
+#### 💡 この変更のメリット
+- ✅ IDEの自動認識とコード補完が正常に動作
+- ✅ Mavenビルドコマンドが標準設定で動作
+- ✅ 他の開発者が理解しやすい業界標準の構造
+- ✅ Spring Bootの規約に完全準拠
+- ✅ 保守性と拡張性の向上
+
+---
+
 ## [バージョン 0.0.1-SNAPSHOT] - 2025-10-13
 
 ### 🎉 初回リリース - 基本機能実装

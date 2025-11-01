@@ -7,18 +7,18 @@ projectmanagement/
 │
 ├── src/
 │   ├── main/
-│   │   ├── java/com/example/
+│   │   ├── java/com/example/projectmanagement/    # ✅ 標準Maven構造に移行完了
 │   │   │   │
 │   │   │   ├── 📦 entity/                    # エンティティ層（ドメインモデル）
 │   │   │   │   ├── ✅ User.java              # 実装済み - ユーザーエンティティ
-│   │   │   │   ├── 🆕 Project.java           # 新規 - プロジェクトエンティティ
+│   │   │   │   ├── ✅ Project.java           # 実装済み - プロジェクトエンティティ
+│   │   │   │   ├── ✅ ProjectMember.java     # 実装済み - プロジェクトメンバー
 │   │   │   │   ├── 🆕 Task.java              # 新規 - タスクエンティティ
-│   │   │   │   ├── 🆕 ProjectMember.java     # 新規 - プロジェクトメンバー
 │   │   │   │   └── 🆕 Comment.java           # 新規 - コメントエンティティ
 │   │   │   │
 │   │   │   ├── 📦 repository/                # リポジトリ層（データアクセス）
 │   │   │   │   ├── ✅ UserRepository.java    # 実装済み
-│   │   │   │   ├── 🆕 ProjectRepository.java
+│   │   │   │   ├── ✅ ProjectRepository.java # 実装済み
 │   │   │   │   ├── 🆕 TaskRepository.java
 │   │   │   │   ├── 🆕 ProjectMemberRepository.java
 │   │   │   │   └── 🆕 CommentRepository.java
@@ -32,7 +32,7 @@ projectmanagement/
 │   │   │   │
 │   │   │   ├── 📦 controller/                # コントローラ層（プレゼンテーション）
 │   │   │   │   ├── ✅ UserController.java    # 実装済み
-│   │   │   │   ├── 🔧 DashboardController.java # 修正 - 統計情報追加
+│   │   │   │   ├── ✅ DashboardController.java # 実装済み - 統計情報追加予定
 │   │   │   │   ├── 🔧 ProjectController.java   # 修正 - 機能実装
 │   │   │   │   ├── 🔧 TaskController.java      # 修正 - 機能実装
 │   │   │   │   └── 🔧 CommentController.java   # 修正 - 機能実装
@@ -59,9 +59,7 @@ projectmanagement/
 │   │   │   │
 │   │   │   ├── 📦 config/                    # 設定クラス
 │   │   │   │   ├── ✅ SecurityConfig.java    # 実装済み
-│   │   │   │   └── 🔧 DataInitializer.java   # 修正 - 初期データ追加
-│   │   │   │
-│   │   │   ├── 📦 model/                     # モデルクラス（予備）
+│   │   │   │   └── ✅ DataInitializer.java   # 実装済み - 初期データ追加
 │   │   │   │
 │   │   │   ├── 📦 util/                      # ユーティリティ
 │   │   │   │   └── 🆕 DateUtils.java         # オプション
@@ -139,18 +137,18 @@ projectmanagement/
 
 | カテゴリ | 実装済み | 修正 | 新規 | 合計 |
 |---------|---------|-----|-----|------|
-| **エンティティ** | 1 | 0 | 4 | 5 |
-| **リポジトリ** | 1 | 0 | 4 | 5 |
+| **エンティティ** | 3 | 0 | 2 | 5 |
+| **リポジトリ** | 2 | 0 | 3 | 5 |
 | **サービス** | 1 | 0 | 4 | 5 |
-| **コントローラ** | 1 | 4 | 0 | 5 |
+| **コントローラ** | 2 | 3 | 0 | 5 |
 | **DTO** | 0 | 0 | 7 | 7 |
 | **フォーム** | 0 | 0 | 4 | 4 |
 | **例外** | 0 | 0 | 3 | 3 |
-| **設定** | 2 | 1 | 0 | 3 |
+| **設定** | 2 | 0 | 0 | 2 |
 | **テンプレート** | 2 | 2 | 10 | 14 |
 | **JavaScript** | 0 | 0 | 3 | 3 |
 | **ドキュメント** | 10 | 0 | 0 | 10 |
-| **合計** | **18** | **7** | **39** | **64** |
+| **合計** | **22** | **5** | **36** | **63** |
 
 ---
 
@@ -451,5 +449,28 @@ Entity 層
 
 ---
 
-**最終更新日**: 2025年10月13日
+## 🔄 構造変更履歴
+
+### 2025年11月1日 - 標準Maven構造への移行完了 ✅
+
+**変更内容:**
+- **旧構造:** `src/com/example/main/java/` (非標準)
+- **新構造:** `src/main/java/com/example/projectmanagement/` (Maven標準)
+
+**移行された項目:**
+- ✅ 全14個のJavaファイルを新構造に移行し、package宣言を修正
+- ✅ resourcesフォルダを `src/main/resources/` に移動
+- ✅ testフォルダを標準構造 `src/test/java/` に整備
+- ✅ 旧フォルダを削除してクリーンアップ完了
+- ✅ pom.xmlは標準設定のため変更不要
+
+**メリット:**
+- IDEの自動認識が改善
+- Mavenコマンドが標準設定で動作
+- 他の開発者にとって理解しやすい構造
+- 業界標準に準拠
+
+---
+
+**最終更新日**: 2025年11月1日
 
