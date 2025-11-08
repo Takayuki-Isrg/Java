@@ -1,18 +1,25 @@
 package com.example.projectmanagement.entity;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "projects_members",
-    uniqueConstraints = @UniqueConstraint(columnNames = {"project_id", "user_id"}))
+    uniqueConstraints = @UniqueConstraint(columnNames = 
+    {"project_id", "user_id"}))
 public class ProjectMember {
 
     @Id
@@ -27,6 +34,18 @@ public class ProjectMember {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role_in_project", length = 20)
+    private ProjectMemberRole role;
+
+    // joined at is the date and time when the user joined the project
+    @Column(name = "joined_at")
+    private LocalDateTime joinedAt;
+    
+    @PrePersist
+    protected void onCreate() {
+        joinedAt = LocalDateTime.now();
+    }
     // Getters and Setters
     public Long getId() {
         return id;
