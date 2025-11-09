@@ -1,4 +1,7 @@
+com\example\projectmanagement\entity\ProjectRole.class
+com\example\projectmanagement\repository\ProjectMemberRepository.class
 com\example\projectmanagement\entity\ProjectMember.class
+com\example\projectmanagement\repository\TaskRepository.class
 com\example\projectmanagement\entity\Task$TaskPriority.class
 com\example\projectmanagement\repository\ProjectRepository.class
 com\example\projectmanagement\service\UserService.class
@@ -14,5 +17,7 @@ com\example\projectmanagement\entity\Project.class
 com\example\projectmanagement\controller\ProjectController.class
 com\example\projectmanagement\controller\DashboardController.class
 com\example\projectmanagement\controller\TaskController.class
+com\example\projectmanagement\entity\Comment.class
 com\example\projectmanagement\repository\UserRepository.class
 com\example\projectmanagement\entity\User.class
+com\example\projectmanagement\repository\CommentRepository.class

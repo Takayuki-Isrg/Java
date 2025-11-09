@@ -36,7 +36,7 @@ public class ProjectMember {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role_in_project", length = 20)
-    private ProjectMemberRole role;
+    private ProjectRole roleInProject = ProjectRole.MEMBER;
 
     // joined at is the date and time when the user joined the project
     @Column(name = "joined_at")
@@ -72,3 +72,6 @@ public class ProjectMember {
     }
 }
 
+    enum ProjectRole {
+        OWNER, MANAGER, MEMBER, VIEWER;
+    }
