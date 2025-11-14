@@ -19,7 +19,7 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class ProjectService {
-    
+
     @Autowired
     private ProjectRepository projectRepository;
 
