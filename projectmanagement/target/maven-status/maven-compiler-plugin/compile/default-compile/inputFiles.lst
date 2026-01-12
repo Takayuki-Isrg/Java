@@ -7,13 +7,16 @@ D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\contro
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\controller\TaskController.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\repository\ProjectRepository.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\controller\DashboardController.java
+D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\entity\ProjectRole.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\entity\User.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\config\DataInitializer.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\entity\Comment.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\ProjectManagerApplication.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\repository\UserRepository.java
+D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\service\ProjectService.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\config\SecurityConfig.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\service\UserService.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\entity\Task.java
+D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\config\GlobalModelAttributes.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\repository\CommentRepository.java
 D:\Dev\Java\projectmanagement\src\main\java\com\example\projectmanagement\repository\TaskRepository.java

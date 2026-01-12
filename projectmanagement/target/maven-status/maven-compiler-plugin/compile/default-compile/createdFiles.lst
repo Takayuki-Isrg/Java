@@ -7,7 +7,9 @@ com\example\projectmanagement\repository\ProjectRepository.class
 com\example\projectmanagement\service\UserService.class
 com\example\projectmanagement\config\SecurityConfig.class
 com\example\projectmanagement\controller\CommentController.class
+com\example\projectmanagement\service\ProjectService.class
 com\example\projectmanagement\entity\Task.class
+com\example\projectmanagement\config\GlobalModelAttributes.class
 com\example\projectmanagement\controller\UserController.class
 com\example\projectmanagement\entity\Task$TaskStatus.class
 com\example\projectmanagement\ProjectManagerApplication.class

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>新規プロジェクト作成 - プロジェクト管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.projectmanagement.css">
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <div th:replace="fragments/navbar :: navbar('projects')"></div>
+
+    <!-- メインコンテンツ -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white border-bottom-0 pt-4 pb-0">
+                        <h3 class="card-title text-primary">
+                            <i class="bi bi-folder-plus"></i> 新しいプロジェクトを作成
+                        </h3>
+                        <p class="text-muted">プロジェクトの基本情報を入力してください。</p>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/projects}" th:object="${project}">
+                            <!-- プロジェクト名 -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label fw-bold">プロジェクト名 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="例：2024年度 新商品開発" required>
+                            </div>
+
+                            <!-- 説明 -->
+                            <div class="mb-3">
+                                <label for="description" class="form-label fw-bold">説明</label>
+                                <textarea class="form-control" id="description" th:field="*{description}" rows="4" placeholder="プロジェクトの目的や概要を入力してください"></textarea>
+                            </div>
+
+                            <!-- 期間設定 -->
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="startDate" class="form-label fw-bold">開始日</label>
+                                    <input type="date" class="form-control" id="startDate" th:field="*{startDate}">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="endDate" class="form-label fw-bold">終了予定日</label>
+                                    <input type="date" class="form-control" id="endDate" th:field="*{endDate}">
+                                </div>
+                            </div>
+
+                            <!-- ステータス -->
+                            <div class="mb-3">
+                                <label for="status" class="form-label fw-bold">ステータス</label>
+                                <select class="form-select" id="status" th:field="*{status}">
+                                    <option value="ACTIVE">進行中 (Active)</option>
+                                    <option value="ON_HOLD">保留 (On Hold)</option>
+                                    <option value="COMPLETED">完了 (Completed)</option>
+                                </select>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <!-- アクションボタン -->
+                            <div class="d-flex justify-content-end gap-2">
+                                <a href="#" th:href="@{/dashboard}" class="btn btn-light border">キャンセル</a>
+                                <button type="submit" class="btn btn-primary px-4">
+                                    <i class="bi bi-check-lg"></i> 作成する
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- API Utils -->
+    <script src="/js/api-utils.js"></script>
+    <!-- Project Create Script -->
+    <script src="/js/project-create.js"></script>
+</body>
+</html>
+

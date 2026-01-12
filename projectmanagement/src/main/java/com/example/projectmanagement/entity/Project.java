@@ -127,6 +127,14 @@ public class Project {
         this.createdBy = createdBy;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     public List<ProjectMember> getMembers() {
         return members;
     }

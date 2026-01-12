@@ -15,5 +15,10 @@ public class UserController {
     public String registerPage() {
         return "user/register";
     }
+
+    @GetMapping("/resetpassword")
+    public String resetpasswordPage() {
+        return "user/resetpassword";
+    }
 }
 

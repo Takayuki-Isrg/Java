@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>プロジェクト一覧 - プロジェクト管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.projectmanagement.css">
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <div th:replace="fragments/navbar :: navbar('projects')"></div>
+
+    <!-- メインコンテンツ -->
+    <div class="container-fluid mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h2 class="mb-0">
+                    <i class="bi bi-folder"></i> プロジェクト一覧
+                </h2>
+                <p class="text-muted mb-0">登録されているプロジェクトの一覧です。</p>
+            </div>
+            <div>
+                <a class="btn btn-primary" th:href="@{/projects/new}">
+                    <i class="bi bi-plus-circle"></i> 新しいプロジェクト
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">プロジェクト名</th>
+                                <th scope="col">期間</th>
+                                <th scope="col">ステータス</th>
+                                <th scope="col">作成者</th>
+                                <th scope="col" class="text-end">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${#lists.isEmpty(projects)}">
+                                <td colspan="6" class="text-center text-muted py-4">
+                                    まだプロジェクトが登録されていません。
+                                </td>
+                            </tr>
+                            <tr th:each="project : ${projects}">
+                                <td th:text="${project.id}">1</td>
+                                <td th:text="${project.name}">プロジェクト名</td>
+                                <td>
+                                    <span th:if="${project.startDate != null}" 
+                                          th:text="${project.startDate}">2025-01-01</span>
+                                    <span th:if="${project.startDate == null}">-</span>
+                                    〜
+                                    <span th:if="${project.endDate != null}" 
+                                          th:text="${project.endDate}">2025-12-31</span>
+                                    <span th:if="${project.endDate == null}">-</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary" th:switch="${project.status}">
+                                        <span th:case="'ACTIVE'">進行中</span>
+                                        <span th:case="'COMPLETED'">完了</span>
+                                        <span th:case="'ON_HOLD'">保留</span>
+                                        <span th:case="'ARCHIVED'">アーカイブ</span>
+                                        <span th:case="*">未設定</span>
+                                    </span>
+                                </td>
+                                <td th:text="${project.createdBy != null ? project.createdBy.displayName : '不明'}">
+                                    作成者
+                                </td>
+                                <td class="text-end">
+                                    <!-- 詳細画面は今後実装予定 -->
+                                    <a href="#" class="btn btn-sm btn-outline-secondary disabled" tabindex="-1" aria-disabled="true">
+                                        詳細
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- API Utils -->
+    <script src="/js/api-utils.js"></script>
+    <!-- Project List Script -->
+    <script src="/js/project-list.js"></script>
+</body>
+</html>
+
+

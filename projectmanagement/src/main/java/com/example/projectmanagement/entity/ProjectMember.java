@@ -70,8 +70,20 @@ public class ProjectMember {
     public void setUser(User user) {
         this.user = user;
     }
-}
 
-    enum ProjectRole {
-        OWNER, MANAGER, MEMBER, VIEWER;
+    public ProjectRole getRoleInProject() {
+        return roleInProject;
     }
+
+    public void setRoleInProject(ProjectRole roleInProject) {
+        this.roleInProject = roleInProject;
+    }
+
+    public LocalDateTime getJoinedAt() {
+        return joinedAt;
+    }
+
+    public void setJoinedAt(LocalDateTime joinedAt) {
+        this.joinedAt = joinedAt;
+    }
+}
